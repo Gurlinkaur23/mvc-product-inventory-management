@@ -1,0 +1,54 @@
+﻿<!-- Taking a "joined" list of Products and Inventories from the model class to render on the view page. -->
+@model List<LINQ_Lab_2.Models.ProductAndInventory>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/Contents/index.css" />
+</head>
+<body>
+    <div class="container">
+        <center>
+            <h1>Product Inventory Management System</h1>
+            <h2>Product and Inventory Details</h2>
+
+            <div>
+                <table>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Inventory ID</th>
+                        <th>Stock Quantity</th>
+                    </tr>
+                    <!-- Iterating through the list and displaying the details of each product. -->
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Product.ProductID</td>
+                            <td>@item.Product.Name</td>
+                            <td>@item.Product.Description</td>
+                            <td>@item.Product.Price</td>
+                            <td>@item.Inventory.InventoryID</td>
+                            <td>@item.Inventory.StockQuantity</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <br /><br />
+            <!-- This is the action link that takes the user to the Add Products page -->
+            @Html.ActionLink("Add a Product", "AddProduct", "ProductInventory", null, new { @class = "action-link" })
+
+            <!-- This is the action link that takes the user to the Delete Products page -->
+            @Html.ActionLink("Delete a Product", "DeleteProduct", "ProductInventory", null, new { @class = "action-link" })
+        </center>
+    </div>
+</body>
+</html>

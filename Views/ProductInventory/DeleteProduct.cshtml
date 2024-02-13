@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DeleteProduct</title>
+    <link rel="stylesheet" href="~/Contents/AddAndDeleteProduct.css" />
+</head>
+<body>
+    <div class="container">
+        <!-- Passing the user input to the corresponding action method in the controller. -->
+        @using (Html.BeginForm("DeleteProductFunctionality", "ProductInventory"))
+        {
+            <center>
+                <h1>Product Inventory Management System</h1>
+                <h2>Delete a Product</h2>
+                <br />
+
+                <div>
+                    <table>
+                        <tr>
+                            <!-- Using 'HTML Helpers' to take the user input -->
+                            <td>Name of the product to be deleted: </td>
+                            <td>@Html.TextBox("ProductName", null)</td>
+                        </tr>
+                    </table>
+                    <br />
+                    <input type="submit" value="Delete Product" class="btn-submit" />
+                </div>
+                <!-- This message is passed from the controller and will be displayed if the user enters something invalid. -->
+                <p>@TempData["Message"]</p>
+            </center>
+        }
+    </div>
+</body>
+</html>

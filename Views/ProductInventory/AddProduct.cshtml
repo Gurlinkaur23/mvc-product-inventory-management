@@ -1,0 +1,53 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddProduct</title>
+    <link rel="stylesheet" href="~/Contents/AddAndDeleteProduct.css"/>
+</head>
+<body>
+    <div class="container">
+        <!-- Passing the user inputs to the corresponding action method in the controller. -->
+        @using (Html.BeginForm("AddProductFunctionality", "ProductInventory"))
+        {
+            <center>
+                <h1>Product Inventory Management System</h1>
+                <h2>Add a new Product</h2>
+                <br />
+
+                <div>
+                    <table>
+                        <!-- Using 'HTML Helpers' to take the user inputs -->
+                        <tr>
+                            <td>Product Name: </td>
+                            <td>@Html.TextBox("ProductName", null)</td>
+                        </tr>
+                        <tr>
+                            <td>Product Description: </td>
+                            <td>@Html.TextArea("ProductDescription")</td>
+                        </tr>
+                        <tr>
+                            <td>Product Price: </td>
+                            <td>@Html.TextBox("ProductPrice")</td>
+                        </tr>
+                        <tr>
+                            <td>Stock Quantity: </td>
+                            <td>@Html.TextBox("StockQuantity")</td>
+                        </tr>
+                    </table>
+                    <br />
+                    <input type="submit" value="Add Product" class="btn-submit" />
+                </div>
+                <!-- This message is passed from the controller and will be displayed if the user enters something invalid. -->
+                <p>@TempData["Message"]</p>
+            </center>
+        }
+    </div>
+</body>
+</html>
